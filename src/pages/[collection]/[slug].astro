@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Generate paths for all content
+export async function getStaticPaths() {
+  const devotions = await getCollection('devotions');
+  const articles = await getCollection('articles');
+  const sermonNotes = await getCollection('sermonNotes');
+
+  const allContent = [
+    ...devotions.map(entry => ({
+      params: { collection: 'devotions', slug: entry.slug },
+      props: { entry }
+    })),
+    ...articles.map(entry => ({
+      params: { collection: 'articles', slug: entry.slug },
+      props: { entry }
+    })),
+    ...sermonNotes.map(entry => ({
+      params: { collection: 'sermonNotes', slug: entry.slug },
+      props: { entry }
+    }))
+  ];
+
+  return allContent;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <article class="content">
+    <header>
+      <p class="category">{entry.data.category}</p>
+      <h1>{entry.data.title}</h1>
+      <p class="date">
+        {new Date(entry.data.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </p>
+    </header>
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .category {
+    display: inline-block;
+    background-color: var(--header-footer-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    color: var(--header-footer-color);
+    font-size: 2.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .date {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  article :global(h1) {
+    font-size: 2rem;
+    color: var(--header-footer-color);
+    margin: 2rem 0 1rem;
+  }
+
+  article :global(h2) {
+    font-size: 1.5rem;
+    color: var(--header-footer-color);
+    margin: 1.5rem 0 1rem;
+  }
+
+  article :global(p) {
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+
+  article :global(blockquote) {
+    border-left: 4px solid var(--header-footer-color);
+    margin: 1.5rem 0;
+    padding-left: 1rem;
+    font-style: italic;
+    color: #555;
+  }
+</style>

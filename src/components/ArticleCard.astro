@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  url: string;
+  category: string;
+}
+
+const { title, description, date, url, category } = Astro.props;
+---
+
+<article class="card">
+  <div class="category">{category}</div>
+  <h2>{title}</h2>
+  <p class="date">{date}</p>
+  <p class="description">{description}</p>
+  <a href={url}>Read More</a>
+</article>
+
+<style>
+  .card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .category {
+    display: inline-block;
+    background-color: var(--header-footer-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+
+  .date {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 0 1rem 0;
+  }
+
+  .description {
+    margin: 0 0 1.5rem 0;
+  }
+
+  a {
+    color: var(--header-footer-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>

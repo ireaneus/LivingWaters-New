@@ -1,0 +1,64 @@
+---
+const navItems = [
+  { path: '/devotions', label: 'Devotions' },
+  { path: '/articles', label: 'Articles' },
+  { path: '/sermonNotes', label: 'Sermon Notes' },
+];
+---
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">
+        <a href="/">Living Waters RV Ministry</a>
+      </div>
+      <ul>
+        {navItems.map(item => (
+          <li>
+            <a href={item.path}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--header-footer-color);
+    padding: 1rem 0;
+    color: white;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo a {
+    font-size: 1.0rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.2s;
+  }
+
+  li a:hover {
+    opacity: 0.8;
+  }
+</style>

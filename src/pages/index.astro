@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch content from all collections
+const devotions = await getCollection('devotions');
+const articles = await getCollection('articles');
+const sermonNotes = await getCollection('sermonNotes');
+
+// Combine and sort all content by date
+const allContent = [...devotions, ...articles, ...sermonNotes]
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 6); // Get latest 6 items
+
+// Format content for ArticleCard component
+const formattedContent = allContent.map(content => ({
+  title: content.data.title,
+  description: content.data.description,
+  date: new Date(content.data.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }),
+  url: `/${content.collection}/${content.slug}`,
+  category: content.data.category
+}));
+---
+
+<Layout title="Welcome to My Blog">
+  <h1>Latest Posts</h1>
+  <div class="article-grid">
+    {formattedContent.map(content => (
+      <ArticleCard {...content} />
+    ))}
+  </div>
+</Layout>
+
+<style>
+  h1 {
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--header-footer-color);
+  }
+</style>
