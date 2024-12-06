@@ -1,6 +1,10 @@
 ---
 title: Personal Statement of Faith
-date: 2024-11-03
+date: 2024-11-06
+author: "Dave Haines"
+category: "Articles"
+description: "Notice the progression of events in 1 Thess 4-5"
+tags: ["grace", "faith", "Scripture", "Christ"]
 ---
 
 ## The Message of the Bible
