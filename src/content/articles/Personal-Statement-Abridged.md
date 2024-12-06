@@ -1,12 +1,11 @@
 ---
 title: Personal Statement - Unabridged
 date: 2024-11-06
+author: "Dave Haines"
 category: "Articles"
 description: "Notice the progression of events in 1 Thess 4-5"
 tags: ["grace", "faith", "Scripture", "Christ"]
 ---
-
-
 
 ## The Message of the Bible
 I believe that the central message of the Bible is the establishment of God’s Kingdom, redeeming His people for His glory. The Scriptures, being the inspired and infallible Word of God, are the foundation of all Christian belief and practice.
