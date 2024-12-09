@@ -28,7 +28,7 @@ const CDINotes = defineCollection({
   schema: baseSchema.extend({
     category: z.literal('CDI Notes'),
     speaker: z.string(),
-    bibleReference: z.string(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 

@@ -7,6 +7,7 @@ export async function getStaticPaths() {
   const devotions = await getCollection('devotions');
   const articles = await getCollection('articles');
   const sermonNotes = await getCollection('sermonNotes');
+  const CDINotes = await getCollection('CDINotes');
 
   const allContent = [
     ...devotions.map(entry => ({
@@ -19,6 +20,10 @@ export async function getStaticPaths() {
     })),
     ...sermonNotes.map(entry => ({
       params: { collection: 'sermonNotes', slug: entry.slug },
+      props: { entry }
+    })),
+    ...CDINotes.map(entry => ({
+      params: { collection: 'CDINotes', slug: entry.slug },
       props: { entry }
     }))
   ];
