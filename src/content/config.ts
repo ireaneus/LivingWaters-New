@@ -23,6 +23,15 @@ const articles = defineCollection({
   }),
 });
 
+const CDINotes = defineCollection({
+  type: 'content',
+  schema: baseSchema.extend({
+    category: z.literal('CDI Notes'),
+    speaker: z.string(),
+    bibleReference: z.string(),
+  }),
+});
+
 const sermonNotes = defineCollection({
   type: 'content',
   schema: baseSchema.extend({
@@ -35,5 +44,6 @@ const sermonNotes = defineCollection({
 export const collections = {
   devotions,
   articles,
+  CDINotes,
   sermonNotes,
 };
