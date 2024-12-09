@@ -27,7 +27,7 @@ const CDINotes = defineCollection({
   type: 'content',
   schema: baseSchema.extend({
     category: z.literal('CDI Notes'),
-    speaker: z.string(),
+    author: z.string(),
     tags: z.array(z.string()).optional(),
   }),
 });
@@ -36,7 +36,7 @@ const sermonNotes = defineCollection({
   type: 'content',
   schema: baseSchema.extend({
     category: z.literal('Sermon Notes'),
-    speaker: z.string(),
+    author: z.string(),
     bibleReference: z.string(),
   }),
 });
