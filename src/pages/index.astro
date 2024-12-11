@@ -7,8 +7,6 @@ import { getCollection } from 'astro:content';
 const devotions = await getCollection('devotions');
 const articles = await getCollection('articles');
 const sermonNotes = await getCollection('sermonNotes');
-const CDINotes = await getCollection('CDINotes');
-
 // Combine and sort all content by date
 const allContent = [...devotions, ...articles, ...sermonNotes]
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())

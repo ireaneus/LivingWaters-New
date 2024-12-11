@@ -4,6 +4,7 @@
   --background-color: antiquewhite;
   --header-footer-color: rgb(8 47 73);
   --text-color: #333;
+  --em-text-color: firebrick;
 }
 
 body {
@@ -15,6 +16,10 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+em {
+  color: var(--em-text-color);
 }
 
 main {

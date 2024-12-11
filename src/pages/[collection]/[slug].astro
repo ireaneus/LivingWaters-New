@@ -7,7 +7,6 @@ export async function getStaticPaths() {
   const devotions = await getCollection('devotions');
   const articles = await getCollection('articles');
   const sermonNotes = await getCollection('sermonNotes');
-  const CDINotes = await getCollection('CDINotes');
 
   const allContent = [
     ...devotions.map(entry => ({

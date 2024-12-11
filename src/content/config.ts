@@ -44,6 +44,5 @@ const sermonNotes = defineCollection({
 export const collections = {
   devotions,
   articles,
-  CDINotes,
   sermonNotes,
 };
